@@ -102,6 +102,7 @@ export function Footer() {
 
       <div className="border-t border-cream/10 py-5 text-center text-xs text-cream/50">
         © {CURRENT_YEAR} RoupaLua — Todos os direitos reservados.
+        <span className="mt-1 block">Feito por José Cipriano</span>
       </div>
     </footer>
   );

@@ -1,36 +1,112 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👗 RoupaLua
 
-## Getting Started
+Loja de roupas online desenvolvida como trabalho escolar, construída com **Next.js 16**, **TypeScript** e **Tailwind CSS**.
 
-First, run the development server:
+> *"Moda que te faz brilhar"* — Vestidos, blusas, calças, jaquetas, sapatos e acessórios com estilo, qualidade e preço justo.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ✨ Funcionalidades
+
+- 🏠 **Página inicial** com hero, categorias, produtos em destaque e novidades
+- 🛍️ **Catálogo de produtos** com busca, filtro por categoria e ordenação (preço, avaliação)
+- 📦 **Página de produto** com seleção de tamanho, cor e quantidade
+- 🛒 **Carrinho de compras** funcional com drawer lateral e persistência em `localStorage`
+- ✅ **Checkout completo** com dados de entrega, formas de pagamento (Pix, Cartão, Boleto) e tela de confirmação de pedido
+- 📄 **Páginas institucionais**: Sobre nós e Contato
+- 📱 **Design responsivo** e totalmente em português
+- 🖼️ **Ilustrações SVG** dos produtos (sem dependência de imagens externas)
+- 🚚 **Frete grátis** acima de R$ 199 e desconto de 5% no Pix
+
+## 🛠️ Tecnologias
+
+- [Next.js 16](https://nextjs.org/) (App Router)
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- Lucide React (ícones)
+
+## 📁 Estrutura do projeto
+
+```
+src/
+├── app/
+│   ├── page.tsx                  # Home
+│   ├── produtos/
+│   │   ├── page.tsx              # Catálogo
+│   │   ├── Catalog.tsx           # Filtros e grid (client)
+│   │   └── [id]/page.tsx         # Detalhe do produto
+│   ├── carrinho/page.tsx         # Carrinho
+│   ├── checkout/page.tsx         # Checkout
+│   ├── sobre/page.tsx            # Sobre
+│   ├── contato/page.tsx          # Contato
+│   └── not-found.tsx             # Página 404
+├── components/
+│   ├── Navbar.tsx / Footer.tsx
+│   ├── ProductCard.tsx
+│   ├── ProductVisual.tsx         # Ilustrações SVG
+│   ├── ProductPurchase.tsx       # Seletor tamanho/cor
+│   ├── CartDrawer.tsx            # Carrinho lateral
+│   └── AddToCartQuick.tsx
+├── context/
+│   └── CartContext.tsx           # Estado global do carrinho
+└── lib/
+    ├── products.ts               # Base de dados (18 produtos)
+    └── types.ts                  # Tipos e constantes
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Como rodar
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Instalar dependências
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Desenvolvimento
+npm run dev
 
-## Learn More
+# Build estático (gera a pasta "out/")
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# Visualizar o build de produção localmente
+npx serve out
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Lint
+npm run lint
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Acesse [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+## 🌐 Deploy na Netlify
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+O projeto está configurado para **static export** (`output: "export"` no `next.config.ts`), gerando a pasta `out/` com HTML, CSS e JS puros — sem necessidade de servidor Node.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+O arquivo `netlify.toml` já define:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = "out"
+```
+
+Para publicar:
+
+1. Envie o código para um repositório Git (GitHub, GitLab, etc.)
+2. Na Netlify, clique em **Add new site → Import an existing project**
+3. Selecione o repositório — a Netlify detecta o `netlify.toml` automaticamente
+4. Clique em **Deploy site**
+
+> Dica: se o deploy foi feito antes por drag-and-drop da pasta errada, apague o site na Netlify e faça um novo deploy via Git para garantir que o build rode corretamente.
+
+## 🗺️ Rotas
+
+| Rota | Descrição |
+|---|---|
+| `/` | Página inicial |
+| `/produtos` | Catálogo com filtros |
+| `/produtos/[id]` | Detalhe do produto |
+| `/carrinho` | Carrinho de compras |
+| `/checkout` | Finalizar compra |
+| `/sobre` | Sobre a loja |
+| `/contato` | Formulário de contato |
+
+---
+
+**Feito por José Cipriano**
