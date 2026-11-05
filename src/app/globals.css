@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #faf6f0;
+  --color-sand: #f0e6d8;
+  --color-ink: #221c17;
+  --color-ink-soft: #5c5348;
+  --color-terra: #e4572e;
+  --color-terra-dark: #c7451f;
+  --color-gold: #d9a441;
+  --color-sage: #7d8c6f;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-terra);
+  color: white;
+}
+
+.input {
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-ink) 20%, transparent);
+  background: white;
+  padding: 0.7rem 1rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.input:focus {
+  border-color: var(--color-terra);
+}
